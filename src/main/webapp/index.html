@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="EN">
+  <head>
+    <title>Greeting Service : Home</title>
+    <style>
+      body {
+        align-content: center;
+      }
+      h2 {
+        text-align: center;
+      }
+      table {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      table {
+        border: solid;
+        border-collapse: collapse;
+        border-width: 2px;
+      }
+      th,
+      td {
+        border: solid;
+        border-width: 1px;
+        width: '*';
+        vertical-align: middle;
+        padding: 5px;
+      }
+      td table {
+        border: none;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <pre id="root"></pre>
+    <script>
+      const createNode = name => {
+        return document.createNode(name);
+      };
+      async function loadData() {
+        const response = await fetch('v2/api-docs');
+        const data = await response.json();
+        const h2 = document.createElement('h2');
+        h2.innerHTML = 'Greeting Service : Available REST Services';
+        const table = document.createElement('table');
+        var tableData =
+          "<tr style='font-weight:bold'><th>Path</th><th>Request Type</th><th>Parameters</th></tr>";
+        for (const [key, value] of Object.entries(data)) {
+          if (key == 'paths') {
+            var path = key;
+            for (const [path, pathData] of Object.entries(data[key])) {
+              var rowSpan1 = 1;
+              var rowSpan2 = 1;
+              const requestTypes = data[key][path];
+              var paramTable = '<table>';
+              var responseTable = '<table>';
+              var requestTypeTable = '<table>';
+              for (const [requestType, requestTypeData] of Object.entries(
+                requestTypes
+              )) {
+                const options = requestTypes[requestType];
+                rowSpan1 = Object.keys(options).length;
+                for (const [option, optionData] of Object.entries(options)) {
+                  var params = options[option];
+                  for (const [param, paramData] of Object.entries(params)) {
+                    if (option == 'parameters') {
+                      paramTable += '<tr>';
+                      paramTable +=
+                        '<td><pre>' +
+                        JSON.stringify(paramData, undefined, 2) +
+                        '</pre></td>';
+                      paramTable += '</tr>';
+                    } else if (option == 'responses') {
+                      responseTable += '<tr>';
+                      responseTable +=
+                        '<td><pre>' +
+                        JSON.stringify(paramData, undefined, 2) +
+                        '</pre></td>';
+                      responseTable += '</tr>';
+                    }
+                  }
+                }
+                rowSpan1 *= rowSpan2;
+                console.log(rowSpan1 + ' ' + rowSpan2);
+                paramTable += '</table>';
+                responseTable += '</table>';
+                requestTypeTable += '</table>';
+                tableData +=
+                  '<tr><td>' +
+                  path +
+                  '</td><td>' +
+                  requestType +
+                  '</td><td>' +
+                  paramTable +
+                  '</td></tr>';
+              }
+            }
+          }
+        }
+        table.innerHTML = tableData;
+        const rootElement = document.getElementById('root');
+        rootElement.appendChild(h2);
+        rootElement.appendChild(table);
+      }
+      loadData();
+    </script>
+  </body>
+</html>
