@@ -33,7 +33,7 @@ public class GreetingServiceImpl implements GreetingService {
 	 */
 	@Override
 	public String getMessage(final String userFirst, final String userLast) {
-		final String name = StringUtils.trimWhitespace(userFirst + " " + userLast);
+		final String name = StringUtils.trimWhitespace(userFirst + (userLast == null ? "" : " " + userLast));
 		findAndUpdateUser(userFirst, userLast);
 		return String.format(greetingMessage, name);
 	}
