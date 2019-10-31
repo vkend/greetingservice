@@ -6,7 +6,7 @@
 ### Getting Started
 ```
 
-git clone the https://github.com/vkend/greetingservice.git
+git clone https://github.com/vkend/greetingservice.git
 cd greetingservice
 mvn clean install
 java -jar greetingservice-0.0.1-SNAPSHOT.war
