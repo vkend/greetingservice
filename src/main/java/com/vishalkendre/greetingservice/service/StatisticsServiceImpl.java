@@ -31,7 +31,7 @@ public class StatisticsServiceImpl implements StatisticsService {
 		visitors.forEach(visitor -> {
 			visitorStats.setTotalVisits(visitorStats.getTotalVisits() + visitor.getVisitCount());
 			visitorStats.getVisitorFirstNames().add(visitor.getUserFirst());
-			visitorStats.getVisitorLastNames().add(visitor.getUserLast());
+			if(visitor.getUserLast() != null) visitorStats.getVisitorLastNames().add(visitor.getUserLast());
 		});
 		visitorStats.setVisitors(visitors);
 		return visitorStats;
