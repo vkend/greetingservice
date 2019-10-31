@@ -30,7 +30,7 @@ public class GreetingController {
 	 */
 	@GetMapping(path = "/greeting", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String greeting(@RequestParam(value = "userFirst") String userFirst,
-			@RequestParam(value = "userLast", defaultValue = "") String userLast) {
+			@RequestParam(value = "userLast", required=false) String userLast) {
 
 		return greetingService.getMessage(userFirst, userLast);
 	}
