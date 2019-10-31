@@ -13,7 +13,7 @@ java -jar greetingservice-0.0.1-SNAPSHOT.war
 
 ```
 
-###Greeting Service : Available REST Services
+### Available REST Services
 ```
 Request Type	Parameters
 Path : /greeting	
