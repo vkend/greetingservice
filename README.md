@@ -9,7 +9,7 @@
 git clone https://github.com/vkend/greetingservice.git
 cd greetingservice
 mvn package
-java -jar greetingservice-0.0.1-SNAPSHOT.war
+java -jar target/greetingservice-0.0.1-SNAPSHOT.war
 
 ```
 
