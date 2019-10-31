@@ -8,7 +8,7 @@
 
 git clone https://github.com/vkend/greetingservice.git
 cd greetingservice
-mvn clean install
+mvn package
 java -jar greetingservice-0.0.1-SNAPSHOT.war
 
 ```
