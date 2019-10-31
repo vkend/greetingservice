@@ -1,7 +1,8 @@
 package com.vishalkendre.greetingservice.dto;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.vishalkendre.greetingservice.model.Visitor;
 
@@ -13,8 +14,8 @@ import com.vishalkendre.greetingservice.model.Visitor;
  */
 public class VisitorStats {
 	Long totalVisits = 0l;
-	List<String> visitorFirstNames = new ArrayList<>();
-	List<String> visitorLastNames = new ArrayList<>();
+	Set<String> visitorFirstNames = new HashSet<>();
+	Set<String> visitorLastNames = new HashSet<>();
 	List<Visitor> visitors;
 	public Long getTotalVisits() {
 		return totalVisits;
@@ -22,16 +23,16 @@ public class VisitorStats {
 	public void setTotalVisits(Long totalVisits) {
 		this.totalVisits = totalVisits;
 	}
-	public List<String> getVisitorFirstNames() {
+	public Set<String> getVisitorFirstNames() {
 		return visitorFirstNames;
 	}
-	public void setVisitorFirstNames(List<String> visitorFirstNames) {
+	public void setVisitorFirstNames(Set<String> visitorFirstNames) {
 		this.visitorFirstNames = visitorFirstNames;
 	}
-	public List<String> getVisitorLastNames() {
+	public Set<String> getVisitorLastNames() {
 		return visitorLastNames;
 	}
-	public void setVisitorLastNames(List<String> visitorLastNames) {
+	public void setVisitorLastNames(Set<String> visitorLastNames) {
 		this.visitorLastNames = visitorLastNames;
 	}
 	public List<Visitor> getVisitors() {
